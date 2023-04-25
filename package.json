@@ -1,7 +1,7 @@
 {
 	"name": "@peeeng/utils",
 	"type": "module",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"packageManager": "pnpm@8.1.1",
 	"description": "peeeng utils",
 	"author": "JiaPeng Li <13673717028m@gmail.com>",
@@ -13,6 +13,29 @@
 	},
 	"bugs": "https://github.com/lijiapeng001/utils/issues",
 	"sideEffects": false,
+	"exports": {
+		"./validate": {
+			"types": "./dist/validate.d.ts",
+			"require": "./dist/validate.cjs",
+			"import": "./dist/validate.mjs"
+		},
+		"./authority": {
+			"types": "./dist/authority.d.ts",
+			"require": "./dist/authority.cjs",
+			"import": "./dist/authority.mjs"
+		}
+	},
+	"main": "./dist/index.mjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"typesVersions": {
+		"*": {
+			"*": [
+				"./dist/*",
+				"./dist/*.d.ts"
+			]
+		}
+	},
 	"files": [
 		"dist"
 	],
@@ -22,7 +45,7 @@
 		"lint": "eslint .",
 		"play": "nr -C playground dev",
 		"test": "vitest",
-		"release": "bumpp && npm publish",
+		"release": "bumpp && npm publish --access public",
 		"typecheck": "vue-tsc --noEmit"
 	},
 	"peerDependencies": {
