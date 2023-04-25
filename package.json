@@ -1,7 +1,7 @@
 {
 	"name": "@peeeng/utils",
 	"type": "module",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"packageManager": "pnpm@8.1.1",
 	"description": "peeeng utils",
 	"author": "JiaPeng Li <13673717028m@gmail.com>",
@@ -47,7 +47,8 @@
 		"lint": "eslint .",
 		"play": "nr -C playground dev",
 		"test": "vitest",
-		"release": "bumpp && npm publish --access public",
+		"bumpp": "bumpp",
+		"release": "npm publish --access public",
 		"typecheck": "vue-tsc --noEmit"
 	},
 	"peerDependencies": {
