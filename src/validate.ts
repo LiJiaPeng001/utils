@@ -1,4 +1,3 @@
-
 const userAgent = window.navigator.userAgent.toLowerCase()
 
 export const isWx = /micromessenger/i.test(userAgent)

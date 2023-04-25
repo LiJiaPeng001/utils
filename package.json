@@ -1,41 +1,24 @@
 {
-	"name": "@peeeng/xxx",
+	"name": "@peeeng/utils",
 	"type": "module",
-	"version": "0.0.1",
+	"version": "0.0.0",
 	"packageManager": "pnpm@8.1.1",
-	"description": "peeeng xxx",
+	"description": "peeeng utils",
 	"author": "JiaPeng Li <13673717028m@gmail.com>",
 	"license": "MIT",
-	"homepage": "https://github.com/lijiapeng001/xxx#readme",
+	"homepage": "https://github.com/lijiapeng001/utils#readme",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/lijiapeng001/xxx.git"
+		"url": "git+https://github.com/lijiapeng001/utils.git"
 	},
-	"bugs": "https://github.com/lijiapeng001/xxx/issues",
+	"bugs": "https://github.com/lijiapeng001/utils/issues",
 	"sideEffects": false,
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"require": "./dist/index.cjs",
-			"import": "./dist/index.mjs"
-		}
-	},
-	"main": "./dist/index.mjs",
-	"module": "./dist/index.mjs",
-	"types": "./dist/index.d.ts",
-	"typesVersions": {
-		"*": {
-			"*": [
-				"./dist/*",
-				"./dist/index.d.ts"
-			]
-		}
-	},
 	"files": [
 		"dist"
 	],
 	"scripts": {
 		"build": "unbuild",
+		"dev": "unbuild --stub",
 		"lint": "eslint .",
 		"play": "nr -C playground dev",
 		"test": "vitest",
