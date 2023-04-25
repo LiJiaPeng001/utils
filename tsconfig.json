@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es2018",
     "module": "esnext",
-    "lib": ["esnext","dom"],
+    "lib": [ "esnext", "dom" ],
     "moduleResolution": "node",
     "esModuleInterop": true,
     "strict": true,
@@ -10,5 +10,8 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true
-  }
+  },
+  "include": [
+    "./src/*.ts"
+  ],
 }
