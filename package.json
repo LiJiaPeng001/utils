@@ -1,7 +1,7 @@
 {
 	"name": "@peeeng/utils",
 	"type": "module",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"packageManager": "pnpm@8.1.1",
 	"description": "peeeng utils",
 	"author": "JiaPeng Li <13673717028m@gmail.com>",
@@ -46,7 +46,7 @@
 		"vue-tsc": "^1.2.0"
 	},
 	"lint-staged": {
-		"src/*": "eslint --fix"
+		"*.{ts.vue}": "eslint --fix"
 	},
 	"simple-git-hooks": {
 		"pre-commit": "pnpm lint-staged"
