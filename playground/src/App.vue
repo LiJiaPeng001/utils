@@ -1,12 +1,11 @@
 <script lang="ts" setup>
-import { ref } from "vue";
+import * as validate from "../../src/validate"
 
-const name = ref<number>(1);
+console.log(validate)
 </script>
 
 <template>
 	<div class="w-full h-100vh">
-		{{ name }}
 	</div>
 </template>
 

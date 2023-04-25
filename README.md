@@ -1,3 +1,6 @@
-## starter-ts
+# @peeeng/utils
 
-库的原始包
+## use
+```bash
+pnpm install @peeeng/utils
+```
