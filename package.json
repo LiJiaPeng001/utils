@@ -1,7 +1,7 @@
 {
 	"name": "@peeeng/utils",
 	"type": "module",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"packageManager": "pnpm@8.1.1",
 	"description": "peeeng utils",
 	"author": "JiaPeng Li <13673717028m@gmail.com>",
@@ -28,6 +28,16 @@
 			"types": "./dist/authority.d.ts",
 			"require": "./dist/authority.cjs",
 			"import": "./dist/authority.mjs"
+		},
+		"./upload": {
+			"types": "./dist/upload.d.ts",
+			"require": "./dist/upload.cjs",
+			"import": "./dist/upload.mjs"
+		},
+		"./image": {
+			"types": "./dist/image.d.ts",
+			"require": "./dist/image.cjs",
+			"import": "./dist/image.mjs"
 		}
 	},
 	"typesVersions": {
@@ -47,7 +57,7 @@
 		"lint": "eslint .",
 		"play": "nr -C playground dev",
 		"test": "vitest",
-		"bumpp": "bumpp",
+		"bum": "bumpp",
 		"release": "npm publish --access public",
 		"typecheck": "vue-tsc --noEmit"
 	},
