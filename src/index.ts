@@ -1,8 +1,3 @@
-export * from './authority'
-export * from './validate'
-export * from './upload'
-export * from './image'
-
 export function getStyle(obj: HTMLElement, attr: keyof CSSStyleDeclaration) {
   return window.getComputedStyle(obj, null)[attr]
 }

@@ -23,7 +23,7 @@ export function getSize(src: string): Promise<ImageInfo> {
   })
 }
 
-export default async (src: string | ImageInfo[]): Promise<ImageInfo[]> => {
+export async function getSizes(src: string | ImageInfo[]): Promise<ImageInfo[]> {
   if (typeof src === 'string') {
     const image = await getSize(src)
     return [image]
