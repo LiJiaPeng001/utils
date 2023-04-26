@@ -6,7 +6,9 @@
 	"description": "peeeng utils",
 	"author": "JiaPeng Li <13673717028m@gmail.com>",
 	"license": "MIT",
-	"keywords": [ "utils" ],
+	"keywords": [
+		"utils"
+	],
 	"homepage": "https://github.com/lijiapeng001/utils#readme",
 	"repository": {
 		"type": "git",
@@ -59,7 +61,7 @@
 		"play": "nr -C playground dev",
 		"test": "vitest",
 		"bum": "bumpp",
-		"release": "npm publish --access public",
+		"release": "nr build && npm publish --access public",
 		"typecheck": "vue-tsc --noEmit"
 	},
 	"peerDependencies": {
