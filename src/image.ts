@@ -19,7 +19,7 @@ export function getSize(src: string): Promise<ImageInfo> {
       })
     }
 
-    img.onerror = () => resolve({ src, w: 1, h: 1 })
+    img.onerror = () => resolve({ src, w: 0, h: 0 })
   })
 }
 

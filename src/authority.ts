@@ -7,10 +7,9 @@ export interface ConfigRecord {
 /**
  * @author li.jiapeng
  * @desc 本地缓存
- * @param {string} prefix 缓存前缀
- * @param {string} key 缓存前缀
- * @param {array} local localStorage || sessionStorage
- * @param {number} maxAge 到期时间
+ * @param {string} localKey 缓存key
+ * @param {storage} localType localStorage || sessionStorage
+ * @param {number} maxAge 过期时间
  */
 export class Authority {
   constructor(private props: ConfigRecord) { }
