@@ -1,23 +1,27 @@
-export function getStyle(obj: HTMLElement, attr: keyof CSSStyleDeclaration) {
-  return window.getComputedStyle(obj, null)[attr]
+export function getStyle(element: HTMLElement, property: keyof CSSStyleDeclaration): string {
+  return window.getComputedStyle(element, null)[property] as string
 }
 
-export function copyText(text: string): void {
+export async function copyText(text: string): Promise<boolean> {
   const textArea = document.createElement('textarea')
-
-  textArea.style.position = 'fixed'
-  textArea.style.top = '-900px'
-  textArea.style.left = '-900px'
-  textArea.style.width = '2em'
-  textArea.style.height = '2em'
+  const style = {
+    position: 'fixed',
+    top: '-900px',
+    left: '-900px',
+    width: '2em',
+    height: '2em',
+  }
+  Object.assign(textArea.style, style)
   textArea.value = text
   document.body.appendChild(textArea)
   textArea.select()
   try {
-    document.execCommand('copy')
+    await navigator.clipboard.writeText(text)
+    document.body.removeChild(textArea)
+    return true
   }
-  catch (err) {
-    console.error('复制失败,请您手动复制')
+  catch (error) {
+    document.body.removeChild(textArea)
+    return false
   }
-  document.body.removeChild(textArea)
 }

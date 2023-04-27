@@ -1,22 +1,14 @@
-<script lang="ts" setup>
-import { createAuthority } from '../../src/authority'
+<script lang='ts' setup>
+import { copyText } from '../../src/index'
 
-const auth = createAuthority({
-  localKey: 'IU-Peeeng',
-  localType: localStorage,
-  maxAge: 30 * 1000 * 60 * 60 * 24,
-})
-
-console.log(auth.set({ name: 'lijiapeng' }))
-console.log(auth.get())
+async function upload() {
+  const data = await copyText('我永远喜欢新垣结衣')
+  console.log(data, 'data')
+}
 </script>
 
 <template>
-  <div class="w-full h-100vh" />
+  <button @click="upload">
+    upload
+  </button>
 </template>
-
-<style scoped>
-.container {
-  position: relative;
-}
-</style>

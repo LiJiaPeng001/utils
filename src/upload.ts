@@ -1,9 +1,21 @@
 interface UploadOptions {
-  multiple: boolean
+  multiple?: boolean
   accept?: string
 }
 
-let input: HTMLInputElement
+function createInput(): HTMLInputElement {
+  const className = 'peeeng-upload-input'
+  let input = document.getElementsByClassName(className)[0] as HTMLInputElement
+  if (!input) {
+    input = document.createElement('input')
+    input.type = 'file'
+    input.className = className
+    input.style.position = 'fixed'
+    input.style.top = '-1000px'
+    document.body.append(input)
+  }
+  return input
+}
 
 /**
  * @desc 获取上传文件
@@ -11,37 +23,25 @@ let input: HTMLInputElement
  * @returns Array
  */
 
-export function getFiles(options: UploadOptions): Promise<FileList> {
+export function getFiles({ multiple = false, accept = 'image/*' }: UploadOptions): Promise<FileList> {
   return new Promise((resolve) => {
-    if (!input) {
-      input = document.createElement('input')
-      input.type = 'file'
-      input.style.position = 'fixed'
-      input.style.top = '-1000px'
-      document.body.append(input)
-    }
-    input.multiple = options.multiple
-    input.accept = options.accept || 'image/*'
+    const input = createInput()
+    input.multiple = multiple
+    input.accept = accept
     input.value = ''
     input.click()
-    input.onchange = function () {
-      resolve(input.files as FileList)
-    }
+    input.onchange = () => resolve(input.files as FileList)
   })
 }
 
 /**
  * @desc file转base6
  */
-export function fileToBase64(file: File) {
+export function fileToBase64(file: File): Promise<string> {
   const reader = new FileReader()
   return new Promise((resolve, reject) => {
-    reader.onload = function (e) {
-      resolve(e.target?.result)
-    }
-    reader.onerror = function (error) {
-      reject(error)
-    }
+    reader.onload = e => resolve(e.target?.result as string)
+    reader.onerror = error => reject(error)
     reader.readAsDataURL(file)
   })
 }
@@ -49,19 +49,4 @@ export function fileToBase64(file: File) {
 /**
  * @desc 获取file blob地址
  */
-export function getBlobUrl(file: File) {
-  let url = null
-  if (window.createObjectURL !== undefined) {
-    // basic
-    url = window.createObjectURL(file)
-  }
-  else if (window.URL !== undefined) {
-    // mozilla(firefox)
-    url = window.URL.createObjectURL(file)
-  }
-  else if (window.webkitURL !== undefined) {
-    // webkit or chrome
-    url = window.webkitURL.createObjectURL(file)
-  }
-  return url
-}
+export const getBlobUrl = (file: File): string => URL.createObjectURL(file)
