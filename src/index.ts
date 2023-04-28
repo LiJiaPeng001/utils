@@ -23,10 +23,11 @@ export async function copyText(text: string): Promise<boolean> {
     document.body.appendChild(textArea);
     textArea.select();
     if (document.execCommand) {
-      document.execCommand(text);
+      document.execCommand("copy");
       document.body.removeChild(textArea);
       return true;
     } else {
+      document.body.removeChild(textArea);
       return false;
     }
   }
