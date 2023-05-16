@@ -1,16 +1,19 @@
-export interface AuthorityProps {
+export interface AuthorityProps<T> {
   localKey: string
   localType?: Storage
   maxAge?: number
+  defaultData?:T
 }
 
-export class Authority {
-  constructor(private props: Required<AuthorityProps>) {}
+export class Authority<T extends Record<string,any>> {
+  constructor(private props: Required<AuthorityProps<T>>) {
+    if(props.defaultData) this.set(props.defaultData)
+  }
 
   /**
    * 判断数据是否过期
    */
-  private isExpired(data: any): boolean {
+  private isExpired(data: T): boolean {
     const { maxAge } = this.props
     return data.maxAge && Date.now() - data.maxAge >= maxAge!
   }
@@ -18,7 +21,7 @@ export class Authority {
   /**
    * 获取旧数据
    */
-  private getOldData(): any {
+  private getOldData(): T {
     const { localKey, localType } = this.props
     return JSON.parse(localType.getItem(localKey!) ?? '{}')
   }
@@ -26,7 +29,7 @@ export class Authority {
   /**
    * 设置新数据
    */
-  private setData(value: any, oldData: any): void {
+  private setData(value: T, oldData: T): void {
     const { maxAge, localKey, localType } = this.props
     const data = {
       ...oldData,
@@ -39,11 +42,11 @@ export class Authority {
   /**
    * 获取数据
    */
-  get() {
+  get():T {
     const data = this.getOldData()
     if (this.isExpired(data)) {
       this.clear()
-      return {}
+      return this.props.defaultData ?? {} as T;
     }
     return data
   }
@@ -51,7 +54,7 @@ export class Authority {
   /**
    * 设置数据
    */
-  set(value = {}) {
+  set(value:T) {
     const oldData = this.getOldData()
     this.setData(value, oldData)
   }
@@ -70,9 +73,11 @@ export class Authority {
  * @param {AuthorityProps} props 缓存记录
  * @param {storage} props.localType 缓存类型，默认为 localStorage
  * @param {number} props.maxAge 缓存过期时间，默认为 30 天
+ * @param {T} props.defaultData 默认数据
  */
-export function createAuthority(props: AuthorityProps) {
-  const localType = props.localType ?? localStorage
-  const maxAge = props.maxAge ?? 30 * 1000 * 60 * 60 * 24
-  return new Authority({ ...props, localType, maxAge })
+export function createAuthority<T extends Record<string, any>>(props: AuthorityProps<T>) {
+  const localType = props.localType ?? localStorage;
+  const maxAge = props.maxAge ?? 30 * 1000 * 60 * 60 * 24;
+  const defaultData = props.defaultData ?? {} as T;
+  return new Authority<T>({ ...props, localType, maxAge, defaultData });
 }

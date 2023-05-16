@@ -1,9 +1,15 @@
 <script lang="ts" setup>
-import { copyText } from "../../src/index";
+import { createAuthority } from "../../src/authority";
+
+type User =  {
+  name: string,
+  age: number,
+  name1:string
+}
 
 async function upload() {
-  const data = await copyText("22231231");
-  console.log(data, "data");
+  let useAuth = createAuthority<User>({ localKey: 'user' })
+  let user = useAuth.get()
 }
 </script>
 
