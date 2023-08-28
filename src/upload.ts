@@ -19,7 +19,7 @@ function createInput(): HTMLInputElement {
 
 /**
  * @desc 获取上传文件
- * @param options UploadOptions
+ * @param {object} UploadOptions
  * @returns Array
  */
 

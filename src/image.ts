@@ -28,7 +28,7 @@ export function getSize(src: string): Promise<ImageInfo> {
 }
 /**
 * 获取多张图片的尺寸信息
-* @param {ImageInfo[]} images 图片地址或者图片信息数组
+* @param {Array<string>} images 图片地址或者图片信息数组
 * @returns Promise<ImageInfo>
 */
 export function getSizes(src: ImageInfo[]): Promise<ImageInfo[]> {

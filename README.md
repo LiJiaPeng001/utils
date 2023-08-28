@@ -2,5 +2,5 @@
 
 ## use
 ```bash
-pnpm install @peeeng/utils
+npm install @peeeng/utils -S
 ```
