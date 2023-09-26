@@ -7,6 +7,7 @@ export default defineBuildConfig({
     'src/index',
     'src/image',
     'src/upload',
+    'src/fn',
   ],
   declaration: true,
   clean: true,
