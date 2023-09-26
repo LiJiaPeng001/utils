@@ -41,6 +41,11 @@
 			"types": "./dist/image.d.ts",
 			"require": "./dist/image.cjs",
 			"import": "./dist/image.mjs"
+		},
+		"./fn": {
+			"types": "./dist/fn.d.ts",
+			"require": "./dist/fn.cjs",
+			"import": "./dist/fn.mjs"
 		}
 	},
 	"typesVersions": {
