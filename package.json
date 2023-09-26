@@ -1,7 +1,7 @@
 {
 	"name": "@peeeng/utils",
 	"type": "module",
-	"version": "0.0.10",
+	"version": "0.0.11",
 	"packageManager": "pnpm@8.1.1",
 	"description": "peeeng utils",
 	"author": "JiaPeng Li <13673717028m@gmail.com>",
