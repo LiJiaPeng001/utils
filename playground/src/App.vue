@@ -1,20 +1,21 @@
 <script lang="ts" setup>
-import { throttle, debounce } from "../../src/fn";
+import { createAuthority } from "../../src/authority";
 
-window.addEventListener("scroll", throttle(scroll,{delay:1000}));
+type Test1 = Number[]
 
-function scroll<Event>(e) {
-  console.log(e, "scroll");
+let useTest = createAuthority<Test1>({
+  localKey:'test'
+})
+function save(e)
+{
+  useTest.set([Math.random()])
+  let num = useTest.get()
+  console.log(num)
 }
-function changeInput(e) {
-  console.log(e.target.value, "vv");
-}
-let debounceInput = debounce(changeInput, 300)
 </script>
 
 <template>
-  <!-- <button @click="upload"></button> -->
-  <input type="text" @input="debounceInput" />
+  <button @click="save">保存</button>
 </template>
 
 <style>

@@ -32,8 +32,7 @@ export class Authority<T extends Record<string,any>> {
   private setData(value: T, oldData: T): void {
     const { maxAge, localKey, localType } = this.props
     const data = {
-      ...oldData,
-      ...value,
+      [localKey]: value,
       maxAge: oldData.maxAge || Date.now() + maxAge!,
     }
     localType.setItem(localKey!, JSON.stringify(data))
@@ -43,7 +42,8 @@ export class Authority<T extends Record<string,any>> {
    * 获取数据
    */
   get():T {
-    const data = this.getOldData()
+    const {localKey } = this.props
+    const data = this.getOldData()[localKey]
     if (this.isExpired(data)) {
       this.clear()
       return this.props.defaultData ?? {} as T;
