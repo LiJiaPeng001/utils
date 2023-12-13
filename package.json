@@ -22,7 +22,31 @@
       "require": "./dist/index.cjs",
       "import": "./dist/index.mjs"
     },
-    "./*": "./dist/*"
+    "./validate": {
+			"types": "./dist/validate.d.ts",
+			"require": "./dist/validate.cjs",
+			"import": "./dist/validate.mjs"
+		},
+		"./authority": {
+			"types": "./dist/authority.d.ts",
+			"require": "./dist/authority.cjs",
+			"import": "./dist/authority.mjs"
+		},
+		"./upload": {
+			"types": "./dist/upload.d.ts",
+			"require": "./dist/upload.cjs",
+			"import": "./dist/upload.mjs"
+		},
+		"./image": {
+			"types": "./dist/image.d.ts",
+			"require": "./dist/image.cjs",
+			"import": "./dist/image.mjs"
+		},
+		"./fn": {
+			"types": "./dist/fn.d.ts",
+			"require": "./dist/fn.cjs",
+			"import": "./dist/fn.mjs"
+		}
   },
   "typesVersions": {
     "*": {
